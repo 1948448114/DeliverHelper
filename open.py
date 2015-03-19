@@ -121,4 +121,4 @@ postValue['productid']=uinput
 run(postValue)
 # if Add(postValue)==1:
     		# 	state = 0
-¸öÌØÈ¨
+# æ³¨é‡Š
