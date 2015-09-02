@@ -1,22 +1,45 @@
 package main.deliverhelp;
 
-import android.app.Activity;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+
 import sendMessage.sendMessage;
 
 
-public class MainActivity extends Activity {
-
+public class MainActivity extends FragmentActivity implements View.OnClickListener {
+    private ViewPager mPaper;
+    private RadioGroup mGroup;
+    private RadioButton home,setting;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        String number="18115192579";
+        String number="18795880629";
         String content="get";
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        sendMessage send=new sendMessage(this,number,content);
+//        sendMessage send=new sendMessage(this,number,content);
+        mPaper = (ViewPager)findViewById(R.id.content);
+        mGroup = (RadioGroup)findViewById(R.id.group);
+        home = (RadioButton)findViewById(R.id.home);
+        setting = (RadioButton)findViewById(R.id.setting);
+
+        home.setOnClickListener(this);
+        setting.setOnClickListener(this);
+
+//        mGroup.check(R.id.home);
+//        mGroup.setOnCheckedChangeListener(new CheckedChangeListener());
+
+        mPaper.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
+        mPaper.setOnPageChangeListener(new PageChangeListener());
+        mPaper.setOffscreenPageLimit(2);
     }
 
 
@@ -27,6 +50,98 @@ public class MainActivity extends Activity {
         return true;
     }
 
+
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.home:
+                    mPaper.setCurrentItem(0);
+                    break;
+                case R.id.setting:
+                    mPaper.setCurrentItem(1);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
+
+//    private class CheckedChangeListener implements RadioGroup.OnCheckedChangeListener {
+//
+//        @Override
+//        public void onCheckedChanged(RadioGroup buttonView, int isChecked) {
+//            switch (isChecked){
+//                case R.id.home:
+//                    mPaper.setCurrentItem(0);
+//                    System.out.print("home");
+//                    break;
+//                case R.id.setting:
+//                    mPaper.setCurrentItem(1);
+//                    System.out.print("setting");
+//                    break;
+//            }
+//        }
+//    }
+//
+
+    private class PageChangeListener implements ViewPager.OnPageChangeListener{
+
+        @Override
+        public void onPageScrolled(int i, float v, int i2) {
+
+        }
+
+        @Override
+        public void onPageSelected(int i) {
+            switch (i){
+                case 0:
+//                    mGroup.check(R.id.home);
+                    home.setChecked(true);
+                    break;
+
+                case 1:
+//                    mGroup.check(R.id.setting);
+                    setting.setChecked(true);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int i) {
+
+        }
+    }
+
+    private class MyPagerAdapter extends FragmentPagerAdapter{
+        public MyPagerAdapter(FragmentManager fma){
+            super(fma);
+        }
+        @Override
+        public Fragment getItem(int i) {
+
+            switch (i){
+                case 0:
+                    Frag frag = new Frag();
+                    return  frag;
+                case 1:
+                    Frag_settings frags = new Frag_settings();
+                    return  frags;
+            }
+//            Frag frag = new Frag();
+//            Bundle bundle = new Bundle();
+//            bundle.putString("key","hello word"+i);
+//            frag.setArguments(bundle);
+            return null;
+        }
+        @Override
+        public int getCount() {
+            return 2;
+        }
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
