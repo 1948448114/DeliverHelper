@@ -18,23 +18,24 @@
     <RadioGroup
         android:id="@+id/group"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:layout_gravity="bottom"
-        android:background="@drawable/main_navigation_background"
+        android:background="#00bcd4"
         android:gravity="bottom"
         android:orientation="horizontal"
-        android:paddingTop="2.0dip"
         >
         <RadioButton
             android:id="@+id/home"
             style="@style/main_tab_bottom"
             android:checked="true"
+            android:layout_height="fill_parent"
             android:drawableTop="@drawable/main_navigation_home"
             android:text="@string/home"
             />
         <RadioButton
             android:id="@+id/setting"
             style="@style/main_tab_bottom"
+            android:layout_height="fill_parent"
             android:drawableTop="@drawable/main_navigation_personal"
             android:text="@string/setting"
             />

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">DeliverHelp</string>
+    <string name="app_name">Deliver</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="home">首页</string>
     <string name="setting">设置</string>
+    <string name="title_activity_message_setting">message_setting</string>
+    <string name="title_activity_aboutus">aboutus</string>
 
 </resources>

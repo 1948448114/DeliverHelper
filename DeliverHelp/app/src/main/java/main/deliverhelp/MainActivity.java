@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import sendMessage.sendMessage;
+import model.DbModel;
 
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
@@ -25,21 +25,34 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         String content="get";
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        sendMessage send=new sendMessage(this,number,content);
-        mPaper = (ViewPager)findViewById(R.id.content);
-        mGroup = (RadioGroup)findViewById(R.id.group);
-        home = (RadioButton)findViewById(R.id.home);
-        setting = (RadioButton)findViewById(R.id.setting);
 
-        home.setOnClickListener(this);
-        setting.setOnClickListener(this);
+        init();
+
+//        sendMessage send=new sendMessage(this,number,content);
+
+    }
+
+public void init(){
+    mPaper = (ViewPager)findViewById(R.id.content);
+    mGroup = (RadioGroup)findViewById(R.id.group);
+    home = (RadioButton)findViewById(R.id.home);
+    setting = (RadioButton)findViewById(R.id.setting);
+
+    home.setOnClickListener(this);
+    setting.setOnClickListener(this);
 
 //        mGroup.check(R.id.home);
 //        mGroup.setOnCheckedChangeListener(new CheckedChangeListener());
 
-        mPaper.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
-        mPaper.setOnPageChangeListener(new PageChangeListener());
-        mPaper.setOffscreenPageLimit(2);
+    mPaper.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
+    mPaper.setOnPageChangeListener(new PageChangeListener());
+    mPaper.setOffscreenPageLimit(2);
+}
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        DbModel model=new DbModel(this);
+        model.onfinish();
     }
 
 

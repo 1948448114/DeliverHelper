@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50.0dip"
+        >
+        <ImageView
+            android:id="@+id/titleBg"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#3f51b5" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/about_us_return"
+            android:layout_centerInParent="true"
+            android:paddingTop="8dp"
+            android:textSize="20dp"
+            android:paddingRight="8dp"
+            android:drawableLeft="@drawable/ic_navigate_before_black_24dp"
+            android:text="设置"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:background="@drawable/about_us_back"
+        >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:paddingTop="30dp"
+        android:layout_gravity="center"
+        android:text="东南大学"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:paddingTop="30dp"
+            android:layout_gravity="center"
+            android:text="软件学院"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:paddingTop="30dp"
+            android:layout_gravity="center"
+            android:text="email：jerry.liangj@qq.com"/>
+    </LinearLayout>
+</LinearLayout>
